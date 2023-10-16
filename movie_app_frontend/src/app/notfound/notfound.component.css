@@ -1,0 +1,15 @@
+.unauthorized-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    background: linear-gradient(to bottom, #f0ebeb, #c5e1f5);
+  }
+
+  .unauthorized-card {
+    width: 400px;
+  }
+
+  .message {
+    margin-bottom: 10px;
+  }

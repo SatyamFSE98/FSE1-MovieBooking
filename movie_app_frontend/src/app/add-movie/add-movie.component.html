@@ -1,0 +1,53 @@
+<app-navbar></app-navbar>
+<div class="movie-container">
+
+    <mat-card>
+      <mat-card-header>
+        <div class="card-header" *ngIf="addMovieSuccess">
+          <h3 style="color: green;"><b>Movie Added successfully</b></h3>
+          </div>
+          <div class="card-header" *ngIf="loading">
+            <h3 style="color: red;"><b>Movie Already Exists</b></h3>
+            </div>
+
+        <mat-card-title>Add Movie</mat-card-title>
+      
+      </mat-card-header>
+      <mat-card-content>
+        <form [formGroup]="movieForm" (ngSubmit)="onSubmit()">
+          <div class="form-row">
+            <mat-form-field appearance="fill">
+              <mat-label>MovieId</mat-label>
+              <input matInput formControlName="movieId" placeholder="Enter movie Id" required />
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>Movie Name</mat-label>
+              <input matInput formControlName="movieName" placeholder="Enter movie name" required />
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>Theater Name</mat-label>
+              <input matInput formControlName="theaterName" placeholder="Enter theater name" required />
+            </mat-form-field>
+          </div>
+          <div class="form-row">
+            <mat-form-field appearance="fill">
+                <mat-label>Total tickets</mat-label>
+                <input matInput formControlName="totalTickets" placeholder="Enter total tickets for movie" required />
+              </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>ticket status</mat-label>
+              <mat-select formControlName="ticketStatus">
+                <mat-option value="BOOK ASAP">BOOK ASAP</mat-option>
+                <mat-option value="SOLD OUT">SOLD OUT</mat-option>
+              </mat-select>
+            </mat-form-field>          
+          </div>
+          <div class="buttons">
+            <button mat-raised-button color="primary" type="submit" [disabled]="movieForm.invalid">
+              submit
+            </button>
+          </div>
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </div>

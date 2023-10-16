@@ -1,0 +1,88 @@
+.movie-container {
+    display: flex;
+    padding-left: 80px;
+    justify-content: flex-start;
+    align-items: center;
+    height: 80%;
+    background-image:url("https://wallpaperset.com/w/full/1/e/e/166239.jpg");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+  }
+  mat-card {
+    max-width: 500px;
+    width: 100%;
+    height: auto;
+    padding: 20px;
+    opacity: 0.9;
+    /* background-color: rgb(101, 105, 109); */
+    background-color: rgb(47, 37, 68);
+  }
+  mat-card-header {
+    color: rgba(140, 226, 212, 0.63);
+    display: block;
+    padding: 50px;
+    text-align: center;
+  }
+  mat-form-field {
+    padding: 5px;
+    width: 100%;
+  }
+  .message {
+    margin-top: 16px;
+    font-weight: bold;
+  }
+  
+  .error-message {
+    color: red;
+  }
+  
+  .success-message {
+    color: green;
+  }
+  .mat-form-field {
+    width: 100%;
+  }
+  
+  .form-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+  
+  .mat-form-field {
+    width: 100%;
+    padding: 5px;
+  }
+  
+  .mat-card-content {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .toggle-icon {
+    cursor: pointer;
+  }
+  
+  .buttons {
+    display: flex;
+    justify-content: center;
+    color: antiquewhite;
+    margin-top: 16px;
+  }
+  
+  .links {
+    margin-top: 16px;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .links a {
+    color: #3f51b5;
+    text-decoration: none;
+  }
+  
+  .links a:hover {
+    text-decoration: underline;
+  }
+  

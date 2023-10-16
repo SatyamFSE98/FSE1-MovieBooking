@@ -1,0 +1,70 @@
+<div class="forgot-password-card">
+  <mat-card>
+    <mat-card-header>
+      <div class="card-header" *ngIf="loading">
+        <h5 style="color: green;"><b>password reset in process...</b></h5>
+        <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+    </div>
+      <mat-card-title>Forgot Password</mat-card-title>
+      <div *ngIf="resetSuccess !== null" [ngClass]="{'error-message': !resetSuccess, 'success-message': resetSuccess}" class="message">
+        {{ resetSuccess ? 'Reset password successfully!' : 'Reset failed. Wrong username or security .' }}
+      </div>
+    </mat-card-header>
+    <mat-card-content>
+      <form [formGroup]="forgotPasswordForm" (ngSubmit)="onSubmit()">
+        <mat-form-field appearance="fill">
+          <mat-label>Username</mat-label>
+          <input matInput formControlName="username" placeholder="Enter your username" required />
+          <mat-error *ngIf="forgotPasswordForm.get('username').hasError('required')">
+            *username is required
+          </mat-error>
+        </mat-form-field>
+
+        <div class="form-row">
+          <mat-form-field appearance="fill">
+            <mat-label>New Password</mat-label>
+            <input matInput formControlName="password" [type]="hidePassword ? 'password' : 'text'"
+              placeholder="Enter your new password" required />
+            <mat-icon matSuffix class="toggle-icon" (click)="togglePasswordVisibility()">visibility</mat-icon>
+            <mat-error *ngIf="forgotPasswordForm.controls['password'].errors">*min password length 6!.</mat-error>
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Confirm Password</mat-label>
+            <input matInput formControlName="confirmPassword" [type]="hidePassword ? 'password' : 'text'"
+              placeholder="Confirm your new password" required />
+            <mat-icon matSuffix class="toggle-icon" (click)="togglePasswordVisibility()">visibility</mat-icon>
+            <mat-error *ngIf="forgotPasswordForm.controls['confirmPassword'].errors">*Password does not match!.</mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="form-row">
+          <mat-form-field appearance="fill">
+            <mat-label>Security Question</mat-label>
+            <mat-select formControlName="securityQuestion" required>
+              <mat-option value="color">Favourite color</mat-option>
+              <mat-option value="food">Favourite food</mat-option>
+              <mat-option value="sports">Favourite sports</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Security Answer</mat-label>
+            <input matInput formControlName="securityAnswer" placeholder="Enter your security answer" required />
+            <mat-error *ngIf="forgotPasswordForm.get('securityAnswer').hasError('required')">
+              *Security Answer is required
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="buttons">
+          <button mat-raised-button color="primary" type="submit">
+            Submit
+          </button>
+        </div>
+      </form>
+      <div class="links">
+        <a routerLink="/login" style="color: white;">Login</a>
+        <a routerLink="/register" style="color: white;">register</a>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

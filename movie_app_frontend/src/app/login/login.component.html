@@ -1,0 +1,52 @@
+<div class="login-container">
+  <!-- <marquee width="70%" direction="right"
+      style="margin-left: -80%; margin-bottom: 40%; padding-bottom: 2%; padding-top: 2%; margin-top:22px; color: whitesmoke;font-size: 50px;text-shadow: 2px 4px 3px black;">
+      Movie BookingApp</marquee> -->
+      <div class="heading" style="margin-left: -80%; margin-bottom: 40%; padding-bottom: 2%; padding-top: 2%; margin-top:22px; color: whitesmoke;font-size: 50px;text-shadow: 2px 4px 3px black;">
+        Movie Booking App
+      </div>
+  <mat-card>
+    <mat-card-header>
+      <div class="card-header" *ngIf="loading">
+        <h3 style="color: green;"><b>please wait...</b></h3>
+        <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+    </div>
+      <mat-card-title>Login</mat-card-title>
+      <div *ngIf="loginSuccess !== null" [ngClass]="{'error-message': !loginSuccess, 'success-message': loginSuccess}"
+        class="message">
+        {{ loginSuccess ? 'login success!' : 'invalid username or password!' }}
+      </div>
+
+    </mat-card-header>
+    <mat-card-content>
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <mat-form-field appearance="fill">
+          <mat-label>Username</mat-label>
+          <input matInput formControlName="username" placeholder="Enter your username" required />
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Password</mat-label>
+          <input matInput formControlName="password" [type]="hide ? 'password' : 'text'" placeholder="Enter your password"
+            required />
+          <!-- <mat-icon matSuffix class="toggle-icon" (click)="togglePasswordVisibility()">visibility</mat-icon> -->
+          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+
+          [attr.aria-pressed]="hide">
+
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+
+      </button>
+        </mat-form-field>
+        <div class="buttons">
+          <button mat-raised-button style="background-color:rgb(96, 118, 165);" type="submit" [disabled]="loginForm.invalid">
+            Login
+          </button>
+        </div>
+      </form>
+      <div class="links">
+        <a routerLink="/register" style="color: white;">Register Now</a>
+        <a routerLink="/reset" style="color: white;">Forgot Password</a>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

@@ -1,0 +1,62 @@
+.card-header{
+    font-size: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+
+  mat-card-header {
+    display: block;
+    padding: 50px;
+    text-align: center;
+    /* background-color: #333545; */
+  }
+  mat-card-title{
+    display: block;
+    /* padding: 50px; */
+    text-align: center;
+  }
+
+.seats {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .seat-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .row-label {
+    margin-right: 10px;
+  }
+  
+  .seat {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    background-color: lightgray;
+    /* border-radius: 20px; */
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  
+  .red {
+    background-color: red;
+  }
+  .green{
+    background-color: green;
+  }
+  .spacer {
+    margin-left: 20px;
+  }
+  .mat-mdc-form-field {
+    font-size: 14px;
+    width: 100%;
+  }

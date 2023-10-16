@@ -1,0 +1,74 @@
+<app-navbar></app-navbar>
+<!-- <mat-card *ngIf="selectedMovie">
+  <mat-card-header class="card-header">{{ selectedMovie.movieName }}</mat-card-header>
+  <mat-card-content>
+    <div class="seats">
+      <div *ngFor="let row of rows" class="seat-row">
+          <span class="row-label">{{ row }}</span>
+          <div *ngFor="let seat of seats" class="seat"
+              [ngClass]="{ green: isSeatSelected(row,seat), red: isSeatBooked(row , seat) }" (click)="selectSeat(row, seat)">
+              {{ row }}{{ seat }}
+          </div>
+      </div>
+  </div>
+  </mat-card-content>
+</mat-card> -->
+<mat-card>
+    <mat-card-header>
+      <mat-card-title>Book Movie</mat-card-title>
+      <!-- <div *ngIf="bookingSuccess!==null"
+        [ngClass]="{'error-message': !bookingSuccess, 'success-message': bookingSuccess}" class="message">
+        {{ bookingSuccess ? 'booked movie!' : 'Ticket Booked Successfully' }}
+      </div> -->
+      <div class="card-header" *ngIf="bookingSuccess">
+        <h3 style="color: green;"><b>Successfully booked movie</b></h3>
+        </div>
+        <div class="card-header" *ngIf="notbookingSuccess">
+          <h3 style="color: red;"><b>Not Enough Tickets to book</b></h3>
+          </div>
+    </mat-card-header>
+    <mat-card-content>
+      
+<div class="booking-container">
+    <form [formGroup]="bookingForm" (ngSubmit)="onSubmit()" class="form-container">
+      <mat-form-field>
+        <mat-label>Movie Name</mat-label>
+        <input matInput [value]="movieName" disabled>
+      </mat-form-field>
+      <!-- <mat-form-field>no need to show
+        <mat-label>Movie ID</mat-label>
+        <input matInput [value]="movieId" disabled>
+      </mat-form-field> -->
+      <mat-form-field>
+        <mat-label>Theater Name</mat-label>
+        <input matInput [value]="theaterName" disabled>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Number of Tickets</mat-label>
+        <input matInput formControlName="numberOfTickets" type="number" required>
+        <mat-error *ngIf="bookingForm.get('numberOfTickets')?.hasError('required')">
+          Number of Tickets is required
+        </mat-error>
+      </mat-form-field>
+      <!-- <mat-form-field>
+        <mat-label>Enter Seat Numbers</mat-label>
+        <input matInput formControlName="numberOfTickets" type="number" required>
+        <mat-error *ngIf="bookingForm.get('numberOfTickets')?.hasError('required')">
+          Number of Tickets is required
+        </mat-error>
+      </mat-form-field> -->
+      <!-- <mat-form-field>
+        <mat-label>seat Numbers</mat-label>
+        <input matInput type="text" #seatnumbers>
+        <mat-error *ngIf="bookingForm.get('seatnumbers')?.hasError('required')">
+          seatnumbers are required
+        </mat-error>
+      </mat-form-field> -->
+      <div class="button-container">
+        <button mat-raised-button color="primary" type="submit">Book Now</button>
+      </div>
+    </form>
+  </div>
+</mat-card-content>
+</mat-card>
+  

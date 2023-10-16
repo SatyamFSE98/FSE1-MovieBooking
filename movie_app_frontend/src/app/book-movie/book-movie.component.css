@@ -1,0 +1,106 @@
+.booking-container {
+  display: flex;
+  justify-content: center;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+.card-header{
+  font-size: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+mat-card-header {
+  color: white;
+  display: block;
+  padding: 50px;
+  text-align: center;
+  /* background-color: #333545; */
+}
+mat-card-title{
+  display: block;
+  /* padding: 50px; */
+  text-align: center;
+}
+
+.seats {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .seat-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .row-label {
+    margin-right: 10px;
+  }
+  
+  .seat {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    background-color: lightgray;
+    /* border-radius: 20px; */
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  
+  .red {
+    background-color: red;
+  }
+  .green{
+    background-color: green;
+  }
+  .spacer {
+    margin-left: 20px;
+  }
+  .edit-container {
+    display: flex;
+    align-items: center;
+  }
+  
+  .edit-input {
+    width: 50px;
+    margin-right: 10px;
+  }
+  
+  .ok-icon{
+    cursor: pointer;
+    font-weight: bolder;
+    color: green;
+  }
+  .cancel-icon {
+    cursor: pointer;
+    font-weight: bolder;
+    color: red;
+  }
+  
+  .spacer {
+    display: inline-block;
+    width: 8px;
+  }
+  .message {
+    margin-top: 16px;
+    font-weight: bold;
+  }
+  
+  .error-message {
+    color: red;
+  }
+  
+  .success-message {
+    color: green;
+  }
+  

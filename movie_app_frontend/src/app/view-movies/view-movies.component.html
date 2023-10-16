@@ -1,0 +1,88 @@
+<app-navbar></app-navbar>
+<mat-card style="background-color:rgb(13, 19, 109)">
+    <mat-card-content>
+        <mat-form-field>
+            <mat-label>search movies</mat-label>
+            <input matInput (keyup)="applyFilter($event)" placeholder="Enter your search text here" #input>
+            <mat-icon matSuffix>search</mat-icon>
+        </mat-form-field>
+        <table mat-table class="mat-elevation-z8" [dataSource]="dataSource">
+            <ng-container matColumnDef="movieId">
+                <th mat-header-cell *matHeaderCellDef>Movie Id</th>
+                <td mat-cell *matCellDef="let movie">{{ movie.movieId }}</td>
+            </ng-container>
+            <ng-container matColumnDef="movieName">
+                <th mat-header-cell *matHeaderCellDef>Movie Name</th>
+                <td mat-cell *matCellDef="let movie" class="view-details" class="view details"
+                    >{{
+                    movie.movieName }}</td>
+            </ng-container>
+            <ng-container matColumnDef="theaterName">
+                <th mat-header-cell *matHeaderCellDef>Theater Name</th>
+                <td mat-cell *matCellDef="let movie">{{ movie.theaterName }}</td>
+            </ng-container>
+            <ng-container matColumnDef="bookedTickets">
+                <th mat-header-cell *matHeaderCellDef>Seats Booked</th>
+                <td mat-cell *matCellDef="let movie">{{ movie.bookedSeats }}</td>
+            </ng-container>
+            <ng-container matColumnDef="availableTickets">
+                <th mat-header-cell *matHeaderCellDef>Available Tickets</th>
+                <td mat-cell *matCellDef="let movie">
+                    <ng-container *ngIf="editMode|| movie !== selectedMovie; else edit">
+                        {{ movie.totalTickets }}
+                    </ng-container>
+                    <ng-template #edit>
+                        <div class="edit-container">
+                            <input type="number" [(ngModel)]="movie.totalTickets" class="edit-input">
+                        </div>
+                    </ng-template>
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="ticketStatus">
+                <th mat-header-cell *matHeaderCellDef>Ticket Status</th>
+                <td mat-cell *matCellDef="let movie">
+                    <span *ngIf="movie.totalTickets > 0">
+                        <button mat-raised-button style="background-color:rgb(119, 119, 150)" (click)="bookNow(movie)">
+                            Book Now
+                        </button>
+                    </span>
+                    <span *ngIf="movie.totalTickets === 0" style="margin-right: 25px;">Out of Stock</span>
+                    <span class="spacer"></span>
+                    <!-- <button mat-icon-button class="View details" color="accent" (click)="viewDetails(movie)">
+                        <mat-icon>info</mat-icon>
+                    </button> -->
+                </td>
+
+            </ng-container>
+            <ng-container matColumnDef="adminActions">
+                <th mat-header-cell *matHeaderCellDef>Actions</th>
+                <td mat-cell *matCellDef="let movie">
+                    <button mat-icon-button class="delete movie" color="warn" (click)="deleteMovie(movie)">
+                        <mat-icon>delete</mat-icon>
+                    </button>
+                    <span class="spacer"></span>
+                    <button mat-icon-button class="update tickets" color="primary" (click)="editMovie(movie)">
+                        <mat-icon>edit</mat-icon>
+                    </button>
+                    <span class="spacer"></span>
+                    <ng-container *ngIf="!editMode && movie === selectedMovie">
+                        <mat-icon class="ok-icon" class="confirm edit" (click)="confirmEdit(movie)">done</mat-icon>
+                        <span class="spacer"></span>
+                        <mat-icon class="cancel-icon" class="cancel edit"
+                            (click)="cancelEdit(movie)">clear</mat-icon>
+                    </ng-container>
+                </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+            <!-- Row shown when there is no matching data. -->
+            <tr class="mat-row" *matNoDataRow>
+                <td class="mat-cell" colspan="4">No data matching the search "{{input.value}}"</td>
+            </tr>
+        </table>
+        <mat-paginator #paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 20]">
+        </mat-paginator>
+    </mat-card-content>
+</mat-card>
